@@ -14,9 +14,9 @@ while the end-effector follows a path.
 * numpy
 
 ## Use
-<code>from planarobot.planar_arm import PlanarArm
-
-<code>links = np.array([2, 1, 1])  # lengths of links</code>  
-<code>robot = PlanarArm(links)</code>
+<code>from planarobot.planar_arm import PlanarArm  
+  
+<code>links = np.array([2, 1, 1])  # lengths of links</code>   
+<code>robot = PlanarArm(links)</code>  
 
 <code>...</code>
