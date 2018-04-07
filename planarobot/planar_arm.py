@@ -63,7 +63,8 @@ class PlanarArm:
         self.q = q
         self.forward_kinematics(q)
 
-        self.q_d = np.dot(self.jacobian(q), q_d)
+        if q_d is not None:
+            self.q_d = np.dot(self.jacobian(q), q_d)
 
     def plot(self, plt):
         pos = self.pos[:, -1]
