@@ -3,12 +3,12 @@ from setuptools import setup
 
 setup(name='planarobot',
       packages=['planarobot'],
-      version='0.0.3',
+      version='0.0.4',
       description='Basic planar robotic arm with arbitrary number of links',
       author='Theodore Tsitsimis',
       author_email='th.tsitsimis@gmail.com',
       url='https://github.com/tsitsimis/planar-robot',
-      download_url='https://github.com/tsitsimis/planarobot/archive/0.0.3.tar.gz',
+      download_url='https://github.com/tsitsimis/planarobot/archive/0.0.4.tar.gz',
       keywords=['robotics', 'simulation', 'path-planning'],
       license='MIT',
       classifiers=[

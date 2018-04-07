@@ -67,10 +67,9 @@ class PlanarArm:
             self.q_d = np.dot(self.jacobian(q), q_d)
 
     def plot(self, plt):
-        pos = self.pos[:, -1]
         plt.scatter(self.pos0[0], self.pos0[1], c='k', zorder=10, s=100)
-        plt.plot([self.pos0[0], pos[0, 0]], [self.pos0[1], pos[1, 0]], c='orange')
+        plt.plot([self.pos0[0], self.pos[0, 0]], [self.pos0[1], self.pos[1, 0]], c='orange')
         for i in range(0, self.n_links):
-            plt.scatter(pos[0, i], pos[1, i], c='blue', zorder=10)
+            plt.scatter(self.pos[0, i], self.pos[1, i], c='blue', zorder=10)
             if i >= 1:
-                plt.plot([pos[0, i - 1], pos[0, i]], [pos[1, i - 1], pos[1, i]], c='orange')
+                plt.plot([self.pos[0, i - 1], self.pos[0, i]], [self.pos[1, i - 1], self.pos[1, i]], c='orange')
