@@ -59,7 +59,17 @@ class PlanarArm:
             pos_end_effector[i, :] = pos[:, -1]
         return q, pos_end_effector
 
-    # TODO: init q_d as well
-    def init_arm(self, q):
+    def init_arm(self, q, q_d=None):
         self.q = q
         self.forward_kinematics(q)
+
+        self.q_d = np.dot(self.jacobian(q), q_d)
+
+    def plot(self, plt):
+        pos = self.pos[:, -1]
+        plt.scatter(self.pos0[0], self.pos0[1], c='k', zorder=10, s=100)
+        plt.plot([self.pos0[0], pos[0, 0]], [self.pos0[1], pos[1, 0]], c='orange')
+        for i in range(0, self.n_links):
+            plt.scatter(pos[0, i], pos[1, i], c='blue', zorder=10)
+            if i >= 1:
+                plt.plot([pos[0, i - 1], pos[0, i]], [pos[1, i - 1], pos[1, i]], c='orange')

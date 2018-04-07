@@ -19,26 +19,19 @@ N = t.shape[0]
 traj_x = 2 * (1 - t)
 traj_y = np.sqrt(4 - traj_x**2)
 traj_z = np.zeros(N)
-traj = np.stack((traj_x, traj_y, traj_z))
+traj = np.stack((traj_x, traj_y, traj_z)).T
 
-traj_x_ = utils.interpolate_path(traj_x, T, dt)
-traj_y_ = utils.interpolate_path(traj_y, T, dt)
-traj_z_ = utils.interpolate_path(traj_z, T, dt)
+traj = utils.interpolate_path(traj, T, dt)  # interpolate path
+traj_d = utils.calc_derivatives(traj, dt)  # calculate velocity
 
-traj_xd = utils.calc_derivatives(traj_x_, dt)
-traj_yd = utils.calc_derivatives(traj_y_, dt)
-traj_zd = utils.calc_derivatives(traj_z_, dt)
-traj_d = np.stack((traj_xd, traj_yd, traj_zd))
-
-tt = 0
 tk = 1
 robot.q = np.array([np.pi/3, -2*np.pi/3, np.pi/3])
 # robot.init_arm(np.array([np.pi/2, 0, 0]))
 # q, pos_end_effector = robot.follow_trajectory(traj, traj_d, T, dt)
 
 while tk < N:
-    x = np.array([traj_x[tk], traj_y[tk], traj_z[tk]])
-    xd = np.array([traj_xd[tk], traj_yd[tk], traj_zd[tk]])
+    x = np.array([traj[tk, 0], traj[tk, 1], traj[tk, 2]])
+    xd = np.array([traj_d[tk, 0], traj_d[tk, 1], traj_d[tk, 2]])
     _, pos = robot.inverse_diff_kinematics(x, xd, dt)
 
     # plot
@@ -59,6 +52,5 @@ while tk < N:
         plt.axis('square')
 
     tk += 1
-    tt += dt
 
 plt.show()
