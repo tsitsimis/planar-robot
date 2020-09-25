@@ -1,20 +1,23 @@
-# planaRobot
+# Planar Robot
 2D robotic arm with arbitrary number of links and rotational joints.
 
 Implementation of trajectory planning and kinematic control.
 
 ## Examples
-Real-time visualization of kinematic control while the end-effector follows a path.
+Real-time visualization of kinematic control while the end-effector follows a path [(notebook)](https://github.com/tsitsimis/planar-robot/blob/master/notebooks/Trajectory%20Planning.ipynb).
 
 ![](./assets/planning_robots.gif)
 
 ## Dependencies
 * numpy
+* matplotlib
 
 ## Use
-<code>from planarobot.planar_arm import PlanarArm</code>  
+```python
+from planarobot.planar_arm import PlanarArm  
 
-<code>links = np.array([2, 1, 1])  # lengths of links</code>  
-<code>robot = PlanarArm(links)</code>  
+links = np.array([2, 1, 1])  # lengths of links  
+robot = PlanarArm(links)  
 
-<code>...</code>
+...
+```
