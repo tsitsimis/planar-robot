@@ -1,14 +1,12 @@
 # planaRobot
+2D robotic arm with arbitrary number of links and rotational joints.
 
-2D robotic arm with arbitrary number of links and rotational
-joints.
-
-Ready implementation of trajectory planning and
-kinematic control.
+Implementation of trajectory planning and kinematic control.
 
 ## Examples
-Real-time visualization of kinematic control
-while the end-effector follows a path.
+Real-time visualization of kinematic control while the end-effector follows a path.
+
+![](./assets/planning_robots.gif)
 
 ## Dependencies
 * numpy
