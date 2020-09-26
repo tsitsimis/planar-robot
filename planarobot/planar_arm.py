@@ -79,7 +79,7 @@ class PlanarArm:
         
         return robot_pos
 
-    def plot(self, pos, ax):
+    def plot(self, pos, ax, arm_width=1, joint_size=5):
         """
         Plot arms and links given their locations
 
@@ -93,9 +93,9 @@ class PlanarArm:
         """
 
         ax.scatter(self.base_pos[0], self.base_pos[1], c='k', zorder=10, s=100)
-        ax.plot([self.base_pos[0], pos[0, 0]], [self.base_pos[1], pos[0, 1]], c='orange')
+        ax.plot([self.base_pos[0], pos[0, 0]], [self.base_pos[1], pos[0, 1]], c='orange', linewidth=arm_width)
         
         for i in range(self.n_links):
-            ax.scatter(pos[i, 0], pos[i, 1], c='blue', zorder=10, s=4)
+            ax.scatter(pos[i, 0], pos[i, 1], c='blue', zorder=10, s=joint_size)
             if i >= 1:
-                ax.plot([pos[i - 1, 0], pos[i, 0]], [pos[i - 1, 1], pos[i, 1]], c='orange')
+                ax.plot([pos[i - 1, 0], pos[i, 0]], [pos[i - 1, 1], pos[i, 1]], c='orange', linewidth=arm_width)
